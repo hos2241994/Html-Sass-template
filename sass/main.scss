@@ -1,0 +1,248 @@
+@import "variable";
+@import "mixin";
+@import "extend";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Mereiweater,'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+.container{
+    width: 85%;
+    margin: auto;
+}
+
+//header
+header {
+    background-color: $secondaryColor;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1;
+
+    .logo {
+        @extend .w_f;
+        h2 {
+            padding: 10px 0;
+            color: #c9c5bd;
+        }
+    }
+    ul {
+        @extend .w_f;
+        display: flex;
+        list-style: none;
+        padding: 10px 0;
+        li {
+            padding: 10px 15px;
+            a {
+                color: #c9c5bd;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: bold;
+                @include trans;
+                &:hover {
+                    color: $primaryColor;
+                }
+            }
+        }       
+    }
+}
+
+//home
+.home {
+    background: $home_bg;
+    height: 100vh;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+
+    .home-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    
+        h2 {
+            @extend .h2;
+        }
+    
+        span {
+            @extend .span;
+        }
+    
+        p {
+            @extend .p;
+        }
+
+        button {
+            @extend .button;
+        }
+    }
+}
+
+//Need
+.need {
+    text-align: center;
+    padding: 5rem 0;
+    background-color: $primaryColor;
+
+    h2 {
+        @extend .h2;
+    }
+    span{
+        @extend .span;
+        background-color: $secondaryColor;
+    }
+
+    p {
+        @extend .p;
+        color: $secondaryColor;
+    }
+    
+    button {
+    @extend .button;
+    color: $secondaryColor;
+    background-color: #fff;
+
+    &:hover {
+        color: #fff;
+        background-color: $secondaryColor;
+    }
+    }
+}
+
+//Service
+.service {
+    padding: 5rem 0;
+    text-align: center;
+
+    h2 {
+        @extend .h2;
+        color: $secondaryColor;
+    }
+
+    span {
+        @extend .span;
+        background-color: $secondaryColor;
+    }
+    .service-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 15px;
+        margin: 2rem 0;
+
+        .service-item {
+            i {
+                color: $primaryColor;
+            }
+    
+            h3 {
+                margin: 1rem 0;
+                color: #333;
+            }
+    
+            p {
+                color: #ce982c;
+            }
+        }
+    }
+}
+
+//images
+.images {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    div {
+        position: relative;
+        font-size: 0;
+
+        img{
+            width: 100%;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba($primaryColor, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            @include trans;
+        }
+
+        &:hover {
+            &:after {
+                opacity: 1;
+                visibility:visible; 
+            }
+        }
+    }
+}
+
+//Download
+.download {
+    text-align: center;
+    background-color: $secondaryColor;
+    padding: 5rem 0;
+
+    h2 {
+        @extend .h2;
+        margin-bottom: 50px
+    }
+
+    button {
+        @extend .button;
+    }
+}
+
+//get-touch
+.get-touch {
+    text-align: center;
+    padding: 5rem 0;
+
+    h2 {
+        @extend .h2;
+        color: $secondaryColor;
+    }
+
+    > span {
+        @extend .span;
+    }
+
+    p {
+        @extend .p;
+        margin: 15px 0;
+    }
+
+    .touch-content {
+        display: flex;
+        justify-content: center;
+
+        .item {
+            margin: 1rem 1.5rem;
+
+            i {
+                display: block;
+                margin: 15px 0;
+            }
+
+            &:last-child {
+                span {
+                    color: $primaryColor;
+                }
+            }
+        }
+    }
+}
+
+
+@import "media";
